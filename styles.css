@@ -12,6 +12,7 @@ body {
   justify-content: center;
   background-color: #121212;
   color: white;
+  min-height: 100vh;
 }
 
 h1 {
@@ -125,4 +126,58 @@ h1 {
   font-size: 1.2rem;
   margin-bottom: 10px;
   text-align: center;
+}
+
+footer {
+  margin-top: auto;
+  padding: 20px;
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    padding: 20px;
+    flex-direction: column;
+  }
+
+  .register {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .customer-input {
+    width: 100%;
+  }
+
+  .customer-input button {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  body {
+    font-size: 0.8rem;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .container {
+    padding: 10px;
+  }
+
+  .customer-input p,
+  .customer-input input,
+  #cash-in-register,
+  #change-due {
+    font-size: 1rem;
+  }
+
+  .customer-input button {
+    font-size: 0.7rem;
+  }
+
+  .price {
+    font-size: 1.2rem;
+  }
 }

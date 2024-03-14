@@ -116,7 +116,7 @@ purchaseBtn.addEventListener("click", () => {
   }
 
   if (result === "INSUFFICIENT_FUNDS") {
-    changeDue.textContent = "INSUFFICIENT_FUNDS";
+    changeDue.textContent = "Status: INSUFFICIENT_FUNDS";
     return;
   }
 
