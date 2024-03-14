@@ -11,7 +11,7 @@ let cid = [
   ["ONE HUNDRED", 100],
 ];
 
-let cash = 123;
+let cash = 200;
 let change = cash - price;
 let currencyValues = {
   PENNY: 0.01,
@@ -26,10 +26,13 @@ let currencyValues = {
 };
 
 function reduceChangeToZero(change, cid) {
+  let subtractedValues = [];
+
   for (let i = cid.length - 1; i >= 0; i--) {
     let currencyName = cid[i][0];
     let currencyTotalValue = cid[i][1];
     let currencyUnitValue = currencyValues[currencyName];
+    let subtractedValue = 0;
 
     while (change >= currencyUnitValue && currencyTotalValue > 0) {
       change -= currencyUnitValue;
@@ -37,12 +40,14 @@ function reduceChangeToZero(change, cid) {
       currencyTotalValue = parseFloat(
         (currencyTotalValue - currencyUnitValue).toFixed(2)
       );
+      subtractedValue += currencyUnitValue;
     }
 
     cid[i][1] = currencyTotalValue;
+    subtractedValues.push([currencyName, subtractedValue]);
   }
 
-  return cid;
+  return { cid, subtractedValues };
 }
 
 console.log(reduceChangeToZero(change, cid));
