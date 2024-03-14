@@ -1,0 +1,128 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #121212;
+  color: white;
+}
+
+h1 {
+  text-align: center;
+  padding: 20px;
+  margin: 20px 0;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 50px;
+  width: 100%;
+  border: 1px solid black;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #1f1f1f;
+}
+
+.customer-input {
+  margin: 10px 0;
+  padding: 10px;
+  width: 100%;
+  border-radius: 5px;
+  background-color: #2f2f2f;
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.customer-input p {
+  margin: 5px;
+  padding: 5px;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.customer-input input {
+  margin: 5px;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: #2f2f2f;
+  color: white;
+  border: 1px solid white;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.customer-input button {
+  padding: 5px;
+  border-radius: 5px;
+  background-color: white;
+  color: #121212;
+  border: 1px solid white;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.3s;
+  width: 50%;
+  text-align: center;
+  margin: 5px auto;
+}
+
+.customer-input button:hover {
+  background-color: #121212;
+  color: white;
+}
+
+.price {
+  margin: 10px 0;
+  padding: 10px;
+  border: 5px solid white;
+  font-size: 1.5rem;
+  border-radius: 10px;
+}
+
+.register {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  margin: 20px 0;
+  font-size: 1.2rem;
+}
+
+#cash-in-register {
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #2f2f2f;
+  color: white;
+  border: 1px solid white;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+#cash-in-register::placeholder {
+  color: white;
+}
+
+#change-due {
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #2f2f2f;
+  color: white;
+  border: 1px solid white;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  text-align: center;
+}

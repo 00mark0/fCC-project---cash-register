@@ -1,3 +1,4 @@
+//connecting the dom
 let cash = document.getElementById("cash");
 let purchaseBtn = document.getElementById("purchase-btn");
 let total = document.getElementById("total");
@@ -6,6 +7,7 @@ let changeDue = document.getElementById("change-due");
 let price = 19.5;
 total.textContent = `Total: $${price}`;
 
+//Function that draws from register and returns the the register after and subtracted values and shows status
 function drawFromRegister(change, cashInReg) {
   let subtractedValues = [];
 
@@ -26,7 +28,10 @@ function drawFromRegister(change, cashInReg) {
 
     cashInReg[i][1] = currencyTotalValue;
     if (subtractedValue > 0) {
-      subtractedValues.push([currencyName, subtractedValue]);
+      subtractedValues.push([
+        currencyName,
+        parseFloat(subtractedValue.toFixed(2)),
+      ]);
     }
   }
 
@@ -34,7 +39,16 @@ function drawFromRegister(change, cashInReg) {
     return "INSUFFICIENT_FUNDS";
   }
 
-  return { cashInReg, subtractedValues };
+  let status = "OPEN";
+  for (let i = 0; i < cashInReg.length; i++) {
+    if (cashInReg[i][1] !== 0) {
+      status = "OPEN";
+      break;
+    }
+    status = "CLOSED";
+  }
+
+  return { status, cashInReg, subtractedValues };
 }
 
 let cid = [
@@ -49,6 +63,7 @@ let cid = [
   ["ONE HUNDRED", 100],
 ];
 
+//Values of each currency to reduce the cid depending on change
 let currencyValues = {
   PENNY: 0.01,
   NICKEL: 0.05,
@@ -61,6 +76,7 @@ let currencyValues = {
   "ONE HUNDRED": 100,
 };
 
+// this function updated the cid to the values after the change has been subtracted
 function updateCashInRegister(cashInRegister) {
   while (cashInRegister.firstChild) {
     cashInRegister.removeChild(cashInRegister.firstChild);
@@ -90,6 +106,7 @@ function updateCashInRegister(cashInRegister) {
   }
 }
 
+// on click it displays the subtracted values in the dom and updates the cid and shows status
 purchaseBtn.addEventListener("click", () => {
   let change = Number(cash.value - price);
   let result = drawFromRegister(change, cid);
@@ -110,7 +127,7 @@ purchaseBtn.addEventListener("click", () => {
   } else {
     let changeDueHeader = document.createElement("p");
     let strongElement = document.createElement("strong");
-    strongElement.textContent = "Change due:";
+    strongElement.textContent = `Status: ${result.status}`;
     changeDueHeader.appendChild(strongElement);
     changeDue.appendChild(changeDueHeader);
 
@@ -123,6 +140,7 @@ purchaseBtn.addEventListener("click", () => {
   updateCashInRegister(cashInRegister);
 });
 
+// cid has to be shown in the dom before the purchase button is clicked
 let cashInRegisterHeader = document.createElement("p");
 let strongElement = document.createElement("strong");
 strongElement.textContent = "Cash in register:";
