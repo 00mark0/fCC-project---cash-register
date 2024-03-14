@@ -1,4 +1,4 @@
-let price = 1.87;
+let price = 19.5;
 let cid = [
   ["PENNY", 1.01],
   ["NICKEL", 2.05],
@@ -11,7 +11,7 @@ let cid = [
   ["ONE HUNDRED", 100],
 ];
 
-let cash = 200;
+let cash = 20;
 let change = cash - price;
 let currencyValues = {
   PENNY: 0.01,
@@ -51,3 +51,32 @@ function reduceChangeToZero(change, cid) {
 }
 
 console.log(reduceChangeToZero(change, cid));
+
+function updateCashInRegister(cashInRegister) {
+  while (cashInRegister.firstChild) {
+    cashInRegister.removeChild(cashInRegister.firstChild);
+  }
+
+  let cashInRegisterHeader = document.createElement("p");
+  let strongElement = document.createElement("strong");
+  strongElement.textContent = "Cash in register:";
+  cashInRegisterHeader.appendChild(strongElement);
+  cashInRegister.appendChild(cashInRegisterHeader);
+
+  let currencyNames = [
+    "Pennies",
+    "Nickels",
+    "Dimes",
+    "Quarters",
+    "Ones",
+    "Fives",
+    "Tens",
+    "Twenties",
+    "Hundreds",
+  ];
+  for (let i = 0; i < cid.length; i++) {
+    let p = document.createElement("p");
+    p.textContent = `${currencyNames[i]}: $${cid[i][1]}`;
+    cashInRegister.appendChild(p);
+  }
+}
